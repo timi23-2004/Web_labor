@@ -33,28 +33,40 @@
             </tr>
         </table>
         <aside>
-           <ul>
+            <ul>
                <li><a href="https://www.example.com">Example Link 1</a></li>
                <li><a href="https://www.example.com">Example Link 2</a></li>
                <li><a href="https://www.example.com">Example Link 3</a></li>
-           </ul>
-       </aside>
-       <h2>Galeria</h2>
-       <figure>
-           <img src="kep1.png" alt="Kep1" width="200" height="150">
-           <figcaption>Kep1 leirasa</figcaption>
-            <img src="kep2.png" alt="Kep1" width="200" height="150">
-           <figcaption>Kep2 leirasa</figcaption>
-       </figure>
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-       <form>
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name"><br><br>
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email"><br><br>
-              <label for="message">Message:</label>
-              <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
-              <button type="submit">Submit</button>
-       </form>
+            </ul>
+        </aside>
+        <h2>Galeria</h2>
+        <figure>
+            <img src="kep1.png" alt="Kep1" width="200" height="150">
+            <figcaption>Kep1 leirasa</figcaption>
+            <img src="kep2.png" alt="Kep2" width="200" height="150">
+            <figcaption>Kep2 leirasa</figcaption>
+        </figure>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+            <button type="submit">Submit</button>
+        </form>
+        <button onclick="incrementCounter()">Noveles </button>
+        <p id="counter">0</p>
+        <button onclick="askName()">Kérdezd meg a nevét</button>
+        <br>
+        <br>
+        <p id="name2" style="color: black;"></p>
+        <button onclick="startCountdown()">Indítsd el</button>
+        <p id="countdown">10</p>
+        <ul id="fruitList"></ul>
+        <ul id="personInfo"></ul>
+        <script src="lab.js"></script>
+        <button onclick="changeBg()">Háttér váltás</button>
     </body>
 </html>
