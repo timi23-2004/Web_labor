@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kártyák rács</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">LOGO</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+              aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Főoldal</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Kapcsolat</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <h1 class="mb-4">Három kártya rácsban</h1>
+    <!-- Alert helye -->
+    <div id="alertBox" class="mb-3"></div>
+    <div class="text-end mb-3">
+      <button id="showAlert" class="btn btn-success">Mutasd az alertet</button>
+    </div>
+    <div class="row g-3">
+
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="https://picsum.photos/seed/101/600/400" class="card-img-top" alt="Kép 1">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Cím 1</h5>
+            <p class="card-text">Rövid leírás az első kártyáról. Egy-két mondat tökéletes.</p>
+            <a href="#" class="btn btn-primary mt-auto">Megnyitás</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="https://picsum.photos/seed/102/600/400" class="card-img-top" alt="Kép 2">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Cím 2</h5>
+            <p class="card-text">Rövid leírás a második kártyáról. Rövid és tömör.</p>
+            <a href="#" class="btn btn-primary mt-auto">Megnyitás</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="https://picsum.photos/seed/103/600/400" class="card-img-top" alt="Kép 3">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Cím 3</h5>
+            <p class="card-text">Rövid leírás a harmadik kártyáról. Használható linkek, leírások.</p>
+            <a href="#" class="btn btn-primary mt-auto">Megnyitás</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="container mb-5">
+    <div class="text-center">
+      <!-- Modal trigger -->
+      <button data-bs-toggle="modal" data-bs-target="#infoModal" class="btn btn-primary">Részletek</button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="infoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cím</h5>
+          <button class="btn-close" data-bs-dismiss="modal" aria-label="Bezár"></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal tartalma</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Bezár</button>
+          <button class="btn btn-primary">Mentés</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const showBtn = document.getElementById('showAlert');
+      const alertBox = document.getElementById('alertBox');
+
+      showBtn.addEventListener('click', function() {
+        
+        alertBox.innerHTML = '';
+
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = `
+          <div class="alert alert-success alert-dismissible fade" role="alert">
+            <strong>Siker!</strong> Ez egy példa üzenet.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Bezár"></button>
+          </div>
+        `;
+
+        alertBox.appendChild(wrapper.firstElementChild);
+        requestAnimationFrame(() => {
+          const alertEl = alertBox.querySelector('.alert');
+          alertEl.classList.add('show');
+        });
+      });
+    });
+  </script>
+  <script>
+    
+    if (window.jQuery) {
+      $('#infoModal').on('show.bs.modal', function () {
+        $(this).find('.modal-body p').text('Tartalom betöltve jQuery-ből.');
+      });
+    }
+
+    var infoModal = document.getElementById('infoModal');
+    if (infoModal) {
+      infoModal.addEventListener('show.bs.modal', function (event) {
+        var p = infoModal.querySelector('.modal-body p');
+        if (p) p.textContent = 'Tartalom betöltve natív JS-ből.';
+      });
+    }
+  </script>
+  <!-- Contact form -->
+  <div class="container my-5">
+    <h2>Kapcsolat</h2>
+    <form id="contactForm" class="p-3 border bg-white rounded">
+      <input id="name" class="form-control mb-2" placeholder="Név" required>
+      <input id="email" type="email" class="form-control mb-2" placeholder="Email" required>
+      <textarea id="msg" class="form-control mb-2" placeholder="Üzenet"></textarea>
+      <button type="submit" class="btn btn-success">Küldés</button>
+    </form>
+    <div id="thanks" class="mt-2 text-success"></div>
+  </div>
+
+  <!-- Interaktív példák -->
+  <div class="container my-5">
+    <h2>Interaktív példák</h2>
+    <p id="para">Ez egy eredeti bekezdés.</p>
+    <div class="mb-2">
+      <button id="btnText" class="btn btn-secondary me-2">Szöveg megváltoztatása</button>
+      <button id="btnToggle" class="btn btn-warning">Highlight toggle</button>
+    </div>
+
+    <div id="box" class="p-3 border mb-3">Ez a doboz kapja a <code>.highlight</code> osztályt.</div>
+
+    <div class="mb-2">
+      <button id="btnAjax" class="btn btn-info">AJAX GET (httpbin)</button>
+    </div>
+    <pre id="result" class="p-3 bg-light border" style="max-height:300px;overflow:auto;"></pre>
+  </div>
+
+  <style>
+    .highlight { background: linear-gradient(90deg, rgba(255,235,59,0.15), rgba(3,218,198,0.08));
+               border-color: rgba(255,235,59,0.3) !important; }
+  </style>
+
+  <script>
+    // jQuery form handler
+    if (window.jQuery) {
+      $('#contactForm').on('submit', function(e) {
+        e.preventDefault();
+        const nev = $('#name').val().trim();
+        if (!nev) {
+          $('#thanks').text('Kérlek add meg a neved!').removeClass('text-success').addClass('text-danger');
+          return;
+        }
+        $('#thanks').text(`Köszönjük, ${nev}!`).removeClass('text-danger').addClass('text-success');
+        // Optionally clear form
+        $(this).trigger('reset');
+      });
+    } else {
+      // Native fallback
+      document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nev = document.getElementById('name').value.trim();
+        const thanks = document.getElementById('thanks');
+        if (!nev) {
+          thanks.textContent = 'Kérlek add meg a neved!';
+          thanks.classList.remove('text-success');
+          thanks.classList.add('text-danger');
+          return;
+        }
+        thanks.textContent = `Köszönjük, ${nev}!`;
+        thanks.classList.remove('text-danger');
+        thanks.classList.add('text-success');
+        this.reset();
+      });
+    }
+  </script>
+  <script>
+    // a) szöveg változtatása
+    if (window.jQuery) {
+      $('#btnText').on('click', function() {
+        $('#para').text('Új szöveg');
+      });
+
+      // b) toggle highlight
+      $('#btnToggle').on('click', function() {
+        $('#box').toggleClass('highlight');
+      });
+
+      // c) AJAX GET a httpbin.org/get - eredmény a <pre>#result</pre>-be
+      $('#btnAjax').on('click', function() {
+        $('#result').text('Betöltés...');
+        $.get('https://httpbin.org/get')
+          .done(function(data) {
+            $('#result').text(JSON.stringify(data, null, 2));
+          })
+          .fail(function(err) {
+            $('#result').text('Hiba történt: ' + err.statusText);
+          });
+      });
+
+    } else {
+      // native fallback
+      document.getElementById('btnText').addEventListener('click', function() {
+        document.getElementById('para').textContent = 'Új szöveg';
+      });
+      document.getElementById('btnToggle').addEventListener('click', function() {
+        document.getElementById('box').classList.toggle('highlight');
+      });
+      document.getElementById('btnAjax').addEventListener('click', function() {
+        var result = document.getElementById('result');
+        result.textContent = 'Betöltés...';
+        fetch('https://httpbin.org/get')
+          .then(function(resp) { return resp.json(); })
+          .then(function(data) { result.textContent = JSON.stringify(data, null, 2); })
+          .catch(function(err) { result.textContent = 'Hiba: ' + err; });
+      });
+    }
+  </script>
+</body>
+</html>
